@@ -37,9 +37,6 @@ start_epoch = 0  # start from epoch 0 or last checkpoint epoch
 batch_size = 128
 base_learning_rate = 0.1
 
-# batch_size = 128
-# base_learning_rate = 0.1
-
 if use_cuda:
     # data parallel
     n_gpu = torch.cuda.device_count()
@@ -63,7 +60,7 @@ transform_test = transforms.Compose([
 trainset = torchvision.datasets.CIFAR100(root='/mnt/ramdisk/cifar100/', train=True, download=False, transform=transform_train)
 trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=True, pin_memory=True, num_workers=2)
 
-testset = torchvision.datasets.CIFAR100(root='/mnt/Dataset/cifar100/', train=False, download=False, transform=transform_test)
+testset = torchvision.datasets.CIFAR100(root='/mnt/ramdisk/cifar100/', train=False, download=False, transform=transform_test)
 testloader = torch.utils.data.DataLoader(testset, batch_size=int(batch_size * 1.5), shuffle=False, pin_memory=True, num_workers=2)
 
 # Model
